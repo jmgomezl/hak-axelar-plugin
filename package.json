@@ -5,6 +5,14 @@
   "type": "module",
   "author": "Juanma Gomez",
   "license": "MIT",
+  "homepage": "https://github.com/jmgomezl/hak-axelar-plugin#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jmgomezl/hak-axelar-plugin.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jmgomezl/hak-axelar-plugin/issues"
+  },
   "publishConfig": { "access": "public" },
   "main": "dist/index.cjs",
   "module": "dist/index.js",
