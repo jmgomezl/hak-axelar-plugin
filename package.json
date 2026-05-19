@@ -1,0 +1,60 @@
+{
+  "name": "hak-axelar-plugin",
+  "version": "1.0.0",
+  "description": "Axelar Network cross-chain plugin for Hedera Agent Kit — bridge tokens and send GMP messages between Hedera and 60+ chains",
+  "type": "module",
+  "author": "Juanma Gomez",
+  "license": "MIT",
+  "publishConfig": { "access": "public" },
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "files": ["dist", "README.md", "LICENSE"],
+  "keywords": [
+    "hedera",
+    "axelar",
+    "cross-chain",
+    "bridge",
+    "agent-kit",
+    "defi",
+    "plugin",
+    "solana",
+    "xrpl",
+    "gmp",
+    "interchain"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "lint": "biome lint src tests",
+    "format": "biome format --write src tests",
+    "check": "biome check --write src tests",
+    "prepublishOnly": "npm run build"
+  },
+  "peerDependencies": {
+    "@hashgraph/hedera-agent-kit": "^4.0.0",
+    "@hiero-ledger/sdk": "^2.84.0"
+  },
+  "dependencies": {
+    "long": "^5.3.2",
+    "zod": "^3.22.0"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.4.15",
+    "@hashgraph/hedera-agent-kit": "^4.0.0",
+    "@hiero-ledger/sdk": "^2.84.0",
+    "@types/node": "^22.0.0",
+    "tsup": "^8.5.1",
+    "typescript": "^6.0.3",
+    "vitest": "^4.1.6"
+  }
+}
