@@ -1,6 +1,6 @@
 {
   "name": "hak-axelar-plugin",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Axelar Network cross-chain plugin for Hedera Agent Kit — bridge tokens and send GMP messages between Hedera and 60+ chains",
   "type": "module",
   "author": "Juanma Gomez",
