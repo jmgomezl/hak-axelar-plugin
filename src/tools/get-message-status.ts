@@ -52,10 +52,7 @@ interface ErrorResult {
   error: string;
 }
 
-export class GetMessageStatusTool extends BaseTool<
-  GetMessageStatusInput,
-  GetMessageStatusInput
-> {
+export class GetMessageStatusTool extends BaseTool<GetMessageStatusInput, GetMessageStatusInput> {
   method = "axelar_get_message_status";
   name = "Axelar Get Message Status";
   description =
@@ -112,15 +109,8 @@ export class GetMessageStatusTool extends BaseTool<
     }
   }
 
-  override async shouldSecondaryAction(
-    coreResult: unknown,
-    _context: Context,
-  ): Promise<boolean> {
-    return (
-      typeof coreResult === "object" &&
-      coreResult !== null &&
-      "transaction" in coreResult
-    );
+  override async shouldSecondaryAction(coreResult: unknown, _context: Context): Promise<boolean> {
+    return typeof coreResult === "object" && coreResult !== null && "transaction" in coreResult;
   }
 
   async secondaryAction(): Promise<never> {

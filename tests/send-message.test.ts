@@ -29,9 +29,7 @@ describe("SendMessageTool — coreAction", () => {
 
     const r = result as { extras: Record<string, unknown> };
     expect(r.extras.destinationChain).toBe("ethereum");
-    expect(r.extras.destinationContract).toBe(
-      "0xDEAD000000000000000000000000000000000001",
-    );
+    expect(r.extras.destinationContract).toBe("0xDEAD000000000000000000000000000000000001");
     expect(r.extras.gasTinybars).toBe("5000000");
   });
 

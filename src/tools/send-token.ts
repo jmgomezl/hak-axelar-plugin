@@ -51,9 +51,7 @@ const SendTokenSchema = z.object({
     .string()
     .optional()
     .default("0x")
-    .describe(
-      'ABI-encoded ITS metadata as hex string. Pass "0x" or omit for standard transfer.',
-    ),
+    .describe('ABI-encoded ITS metadata as hex string. Pass "0x" or omit for standard transfer.'),
   network: z
     .enum(["mainnet", "testnet"])
     .optional()
@@ -137,7 +135,8 @@ export class SendTokenTool extends BaseTool<SendTokenInput, SendTokenInput> {
     let metadataBytes: Uint8Array;
     try {
       const rawMeta = args.metadata ?? "0x";
-      metadataBytes = rawMeta === "0x" || rawMeta === "" ? new Uint8Array(0) : hexToBytes32(rawMeta);
+      metadataBytes =
+        rawMeta === "0x" || rawMeta === "" ? new Uint8Array(0) : hexToBytes32(rawMeta);
     } catch (e) {
       return { success: false, error: `Invalid metadata: ${(e as Error).message}` };
     }
@@ -189,15 +188,8 @@ export class SendTokenTool extends BaseTool<SendTokenInput, SendTokenInput> {
     }
   }
 
-  override async shouldSecondaryAction(
-    coreResult: unknown,
-    _context: Context,
-  ): Promise<boolean> {
-    return (
-      typeof coreResult === "object" &&
-      coreResult !== null &&
-      "transaction" in coreResult
-    );
+  override async shouldSecondaryAction(coreResult: unknown, _context: Context): Promise<boolean> {
+    return typeof coreResult === "object" && coreResult !== null && "transaction" in coreResult;
   }
 
   async secondaryAction(
@@ -213,11 +205,10 @@ export class SendTokenTool extends BaseTool<SendTokenInput, SendTokenInput> {
 
     let result: Record<string, unknown>;
     try {
-      result = (await handleTransaction(
-        payload.transaction,
-        hederaClient,
-        context,
-      )) as Record<string, unknown>;
+      result = (await handleTransaction(payload.transaction, hederaClient, context)) as Record<
+        string,
+        unknown
+      >;
     } catch (e) {
       return {
         success: false,

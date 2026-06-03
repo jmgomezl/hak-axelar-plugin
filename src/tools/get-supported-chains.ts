@@ -88,15 +88,8 @@ export class GetSupportedChainsTool extends BaseTool<
     }
   }
 
-  override async shouldSecondaryAction(
-    coreResult: unknown,
-    _context: Context,
-  ): Promise<boolean> {
-    return (
-      typeof coreResult === "object" &&
-      coreResult !== null &&
-      "transaction" in coreResult
-    );
+  override async shouldSecondaryAction(coreResult: unknown, _context: Context): Promise<boolean> {
+    return typeof coreResult === "object" && coreResult !== null && "transaction" in coreResult;
   }
 
   async secondaryAction(): Promise<never> {

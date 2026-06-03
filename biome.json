@@ -14,11 +14,9 @@
       }
     }
   },
-  "organizeImports": {
-    "enabled": true
-  },
+  "assist": { "actions": { "source": { "organizeImports": "on" } } },
   "files": {
-    "ignore": ["dist", "node_modules", "coverage", "*.tgz"]
+    "includes": ["**", "!**/dist", "!**/node_modules", "!**/coverage", "!**/*.tgz"]
   },
   "javascript": {
     "formatter": {

@@ -109,9 +109,7 @@ describe("GetMessageStatusTool", () => {
       mockClient,
     );
 
-    expect((result as { axelarScanUrl: string }).axelarScanUrl).toContain(
-      "testnet.axelarscan.io",
-    );
+    expect((result as { axelarScanUrl: string }).axelarScanUrl).toContain("testnet.axelarscan.io");
   });
 
   it("returns error on HTTP failure", async () => {
@@ -126,8 +124,6 @@ describe("GetMessageStatusTool", () => {
 
   it("shouldSecondaryAction returns false for status result", async () => {
     const statusResult = { success: true, status: "executed" };
-    expect(await getMessageStatusTool.shouldSecondaryAction(statusResult, mockContext)).toBe(
-      false,
-    );
+    expect(await getMessageStatusTool.shouldSecondaryAction(statusResult, mockContext)).toBe(false);
   });
 });
