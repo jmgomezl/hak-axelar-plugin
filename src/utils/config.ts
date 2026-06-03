@@ -37,35 +37,21 @@ export function readNetwork(value: string | undefined): "mainnet" | "testnet" | 
  * Precedence (highest → lowest): ctxConfig > env var > network default
  */
 export function resolveNetworkDefaults(ctxConfig: Partial<AxelarConfig>): AxelarNetworkDefaults {
-  const network =
-    ctxConfig.network ??
-    readNetwork(process.env.AXELAR_NETWORK) ??
-    "mainnet";
+  const network = ctxConfig.network ?? readNetwork(process.env.AXELAR_NETWORK) ?? "mainnet";
 
   const defaults = NETWORK_DEFAULTS[network];
 
   return {
     ...defaults,
     gatewayAddress:
-      ctxConfig.gatewayAddress ??
-      process.env.AXELAR_GATEWAY_ADDRESS ??
-      defaults.gatewayAddress,
+      ctxConfig.gatewayAddress ?? process.env.AXELAR_GATEWAY_ADDRESS ?? defaults.gatewayAddress,
     gasServiceAddress:
       ctxConfig.gasServiceAddress ??
       process.env.AXELAR_GAS_SERVICE_ADDRESS ??
       defaults.gasServiceAddress,
-    itsAddress:
-      ctxConfig.itsAddress ??
-      process.env.AXELAR_ITS_ADDRESS ??
-      defaults.itsAddress,
-    apiBaseUrl:
-      ctxConfig.apiBaseUrl ??
-      defaults.apiBaseUrl,
-    gmpApiBaseUrl:
-      ctxConfig.gmpApiBaseUrl ??
-      defaults.gmpApiBaseUrl,
-    nestServerUrl:
-      ctxConfig.nestServerUrl ??
-      defaults.nestServerUrl,
+    itsAddress: ctxConfig.itsAddress ?? process.env.AXELAR_ITS_ADDRESS ?? defaults.itsAddress,
+    apiBaseUrl: ctxConfig.apiBaseUrl ?? defaults.apiBaseUrl,
+    gmpApiBaseUrl: ctxConfig.gmpApiBaseUrl ?? defaults.gmpApiBaseUrl,
+    nestServerUrl: ctxConfig.nestServerUrl ?? defaults.nestServerUrl,
   };
 }

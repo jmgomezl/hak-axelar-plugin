@@ -22,8 +22,7 @@ export const tinybarsToWeibar = (tinybars: string | number): Long => {
  * instanceof isLong() check when the `long` package loads different files for ESM
  * vs CJS consumers.
  */
-export const safeUint256 = (value: string | bigint): Long =>
-  String(value) as unknown as Long;
+export const safeUint256 = (value: string | bigint): Long => String(value) as unknown as Long;
 
 /**
  * Converts hex string to Uint8Array. Handles optional 0x prefix.
